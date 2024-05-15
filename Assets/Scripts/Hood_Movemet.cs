@@ -58,6 +58,7 @@ public class Hood_Script : MonoBehaviour
         //     }
         Flip();
         Jump();
+        attack();
         decreased_gravity();
         part_system();
        
@@ -177,6 +178,20 @@ public class Hood_Script : MonoBehaviour
             DoubleJump = false;
         }
     }
+
+    private void attack()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            animator.SetBool("isAttacking",true);
+        }
+        if (Input.GetMouseButtonUp(0))
+        {
+            animator.SetBool("isAttacking",false);
+        }
+
+
+    }
     private void decreased_gravity() 
     {
     if (rb.velocity.y < -1f && Input.GetKey(KeyCode.LeftShift))
@@ -192,6 +207,7 @@ public class Hood_Script : MonoBehaviour
     }   
     private void particles_animation()
     {
+        // Doesn't work
         if (IsGrounded())
         {   
             //UnityEngine.Vector2 player_position = (transform.position.x, transform.position.y + 10);
